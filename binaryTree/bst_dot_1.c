@@ -24,7 +24,7 @@ struct Node* insert(struct Node* rootPtr, int data){
     } else if(data >= rootPtr->data){
         rootPtr->right = insert(rootPtr->right, data);
     }
-}
+    return rootPtr;
 
 void preOrder(struct Node* rootPtr){
     if (rootPtr == NULL){
