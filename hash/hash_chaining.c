@@ -1,3 +1,24 @@
+/*****************************************************************/
+/* 1. Create a Employee structure to store a information about employee
+/* 2. Create a Record structure for hash Table
+/* 3. Init HashTable with NULL
+/* 4. Insert:
+/*    a. Check duplicate key
+/*    b. generate hashKey using hash function
+/*    c. create a dynamic memory for Record structure to store data and link
+/* 5. Search:
+/*    a. generate hashKey using hash function
+/*    b. find the hash index using key 
+/*    c. Traversal until NULL and find the key
+/* 6. Show:
+/*    a. store a hash head to a poniter 
+/*    b. check pointer pointing to NULL or not
+/*    c. if not the retrive information till NULL
+/* 7. Remove:
+/*    a. Check wheather have to remove head or link
+/*    b. store it in a temp = ptr->link and ptr->link = temp->link so we retain the other links
+/*       and free the memory
+/*****************************************************************/
 #include <stdio.h>
 #include<stdlib.h>
  
