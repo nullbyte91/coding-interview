@@ -6,10 +6,12 @@
 void printA(int a[], int len){
     //base case
     if (len<=0){
+        printf("\n");
         return;
     } else {
         printf("%d ", *(a+0));
-        printA(a+1, len-1);
+        printA(a+1, len-1); // Recursive 
+        printf("%d ", *(a+0)); //backtracking
     }
 }
 
