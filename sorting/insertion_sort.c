@@ -26,8 +26,8 @@ void insertionSort(int a[], int len){
         start = current - 1;
         while(current >0 && a[start] > key){
             a[start+1] = a[start];
-            start = start - 1;
-            a[start+1] =key;
+            // start = start - 1;
+            a[start] =key;
         }
     }
     for (int i = 0; i<len; i++){
