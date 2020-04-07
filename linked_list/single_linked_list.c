@@ -1,111 +1,153 @@
-//1. Insert at the end
-//2. Insert at the beg
-//3. Insert n the position 
-//4. Delete at the end
-//5. Delete at the beg
-//6. Delete n the position
-//7. Reverse the order
-//8. Reverse the linked list
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <errno.h>
 
-struct Node {
+struct node{
     int data;
-    struct Node *next;
+    struct node* next;
 };
 
-void insert_end(struct Node **head, int data){
-    struct Node* temp = (struct Node*) malloc(sizeof(struct Node));
-    temp->data = data;
+struct node* getNode(int val)
+{
+    struct node * temp = (struct node*)malloc(sizeof(struct node));
+    if (temp == NULL){
+        printf("Failed to create a memory for Node:%d", errno);
+        exit(EXIT_FAILURE);
+    }
+    temp->data = val;
     temp->next = NULL;
-
-    if (*head == NULL){
-        (*head) = temp;
-        return;
-    }
-    struct Node* travel = *head;
-    while(travel->next !=NULL){
-        travel = travel->next;
-    }
-    travel->next = temp;
+    return temp;
 }
 
-void insert_beg(struct Node **head, int data){
-    struct Node* temp = (struct Node*) malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->next = NULL;
+void prePand(struct node ** head, int val)
+{   
+    struct node * temp = getNode(val);
 
-    if (*head == NULL){
-        (*head) = temp;
-        return;
+    if (*(head) == NULL){
+        *(head) == temp;
     }
-    struct Node* temp1 = *head;
-    temp->next = temp1;
-    (*head) = temp;
+    temp->next = *(head);
+    *(head) = temp; 
 }
 
-void insert_nth(struct Node **head, int data, int position){
-    struct Node* temp = (struct Node*) malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->next = NULL;
+void postPand(struct Node ** head, int val)
+{
+    struct node * temp = getNode(val);
 
-    if (*head == NULL){
-        (*head) = temp;
-        return;
+    if (*(head) == NULL){
+        *(head) = temp;
     }
-    struct Node* temp1 = *head;
-    for(int i=0; i<position -2;i++){
-        temp1 = temp1->next;
-    }
-    temp->next = temp1->next;
-    temp1->next = temp;
+    
+    struct node * traversal = *(head);
+    while (traversal->next != NULL)
+        traversal = traversal->next;
+    
+    traversal->next = temp;
 }
 
-void printList(struct Node* head){
-    while(head != NULL){
-        printf("%d ", head->data);
+void appendAtIndex(struct node ** head, int val, int position)
+{
+    struct node * temp = getNode(val);
+
+    if (*(head) == NULL){
+        *(head) = temp;
+    }
+    struct node * next = *head;
+    for (int i = 1; i < position - 1; i++){ 
+        next = next->next;
+    }
+    temp->next = next->next;
+    next->next = temp;
+}
+
+void access(struct node * head)
+{
+    while (head != NULL){
+        printf("%d ", (head->data));
         head = head->next;
     }
     printf("\n");
 }
 
-void printReverse(struct Node* head){
-    //base case
-    if(head == NULL){
-        return;
-    } else{
-        printReverse(head->next);
-        printf("%d ", head->data);
-    }
-}
-
-void reverseLinkedList(struct Node* head)
+void pop(struct node ** head)
 {
-    //base case
-    if(head == NULL){
-        head->next = NULL;
-        return;
-    } else{
-        printReverse(head->next);
-        struct Node* temp = head->next;
-        temp->next = head;
-        head->next = NULL;
+    struct node * temp = *(head);
+    if ((temp) == NULL){
+        printf("List is empty\n");
+    } else if (temp->next == NULL){
+        free(head);
+    } else {
+        struct node *prev = *(head);
+        while (temp->next != NULL){
+            prev = temp;
+            temp = temp->next;
+        }
+        prev->next = NULL;
+        free(temp);
     }
-
 }
 
-int main()
-{ 
-    struct Node *head = NULL;
-    insert_beg(&head, 7);
-    insert_end(&head, 17);
-    insert_end(&head, 27);
-    insert_end(&head, 37);
-    insert_beg(&head, 47);
-    insert_nth(&head, 200, 3);
-    printList(head);
-    printReverse(head);
-    reverseLinkedList(head);
+void popFirst(struct node ** head)
+{
+    struct node * temp = *(head);
+    if ((temp) == NULL){
+        printf("List is empty\n");
+    } else {
+        *(head) = temp->next;
+        free(temp);
+    }
+}
+
+void popAtIndex(struct node ** head, int position)
+{
+    struct node * temp = *(head);
+    if ((temp) == NULL){
+        printf("List is empty\n");
+    } else {
+        struct node * prev = *(head);
+        for (int i = 1; i < position; i++){
+            prev = temp;
+            temp = temp->next;
+        }
+        prev->next = temp->next;
+        free(temp);
+    }
+}
+
+int
+main(int argc, char** argv[]){
+    struct node * head = NULL;
+    /* Add element at beg */
+    prePand(&head, 4);
+    prePand(&head, 3);
+    prePand(&head, 2);
+    prePand(&head, 1);
+    access(head);
+
+    /* Add element at End */
+    postPand(&head, 7);
+    postPand(&head, 8);
+    access(head);
+
+    /* Add element at Nth Index */
+    appendAtIndex(&head, 5, 5);
+    appendAtIndex(&head, 6, 6);
+    access(head);
+
+    /* Delete note at the End */
+    pop(&head);
+    pop(&head);
+    access(head);
+
+    /* Delete node at the beg */
+    popFirst(&head);
+    access(head);
+    popFirst(&head);
+    access(head);
+
+    /* Delete node at Nth Index */
+    popAtIndex(&head, 2);
+    access(head);
     return 0;
 }

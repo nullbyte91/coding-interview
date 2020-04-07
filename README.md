@@ -37,9 +37,26 @@ A List is a collection of items stored at contiguous memory locations. The idea 
 * String Heap Implementation
 * String ADT Implementation
 
----
-**NOTE**
+```bash
 List always looks for contiguous memory and return the pointer if successfull. If the size is full we need to double the array and copy old array elements to new array. To overcome this problem we use <b>Linked List</br>.
----
+```
+
+## Linked List
+#### ADT:
+A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers.
+
+Linked List is an Abstract Data Type (ADT) that holds a collection of Nodes, the nodes can be accessed in a sequential way.
+
+* prepand(value) - Add Node at the beg
+* postpand(vale) - Add Node at the end
+* appendAtIndex(position) - Add Node at the Nth Index
+* pop() - Remove node at the end
+* popFirst() - Remove node at the beg
+* popAtIndex(position) - Remove at Nth Index 
+
+#### Implementation:
+* [Single Linked List ADT Implementation](linked_list/single_linked_list.c)
+
+
 
 
