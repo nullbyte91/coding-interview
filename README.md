@@ -56,7 +56,23 @@ Linked List is an Abstract Data Type (ADT) that holds a collection of Nodes, the
 
 #### Implementation:
 * [Single Linked List ADT Implementation](linked_list/single_linked_list.c)
+* [Reverse a linked list using Iteration]
+* [Reverse a linked list using recursion]
+* [Double Linked List ADT Implementation]
+* [Circular Linked List ADT Implementation]
 
+
+## Stack
+### ADT:
+Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).
+![stack](images/stack.png)
+
+* isFull(), This is used to check whether stack is full or not
+* isEmpry(), This is used to check whether stack is empty or not
+* push(x), This is used to push x into the stack
+* pop(), This is used to delete one element from top of the stack
+* peek(), This is used to get the top most element of the stack
+* size(), this function is used to get number of elements present into the stack
 
 
 
