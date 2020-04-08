@@ -74,5 +74,20 @@ Stack is a linear data structure which follows a particular order in which the o
 * peek(), This is used to get the top most element of the stack
 * size(), this function is used to get number of elements present into the stack
 
+### Implementation:
+[Single Linked List Stacks ADT Implementation](stacks/stack_linked_list.c)
 
+### Queue
+A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first. The difference between stacks and queues is in removing. In a stack we remove the item the most recently added; in a queue, we remove the item the least recently added.
+![Queue](images/Queue.png)
+
+* enqueue() – Insert an element at the end of the queue.
+* dequeue() – Remove and return the first element of the queue, if the * * queue is not empty.
+* peek() – Return the element of the queue without removing it, if the * * queue is not empty.
+* size() – Return the number of elements in the queue.
+* isEmpty() – Return true if the queue is empty, otherwise return false.
+* isFull() – Return true if the queue is full, otherwise return false.
+
+### Implementation:
+[queue_linked_list](queue/queue_linked_list.c)
 
