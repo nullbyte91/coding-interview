@@ -14,7 +14,10 @@ In simple term, ADT is a definition of data type and operation, but not the impl
 * How to <b>Sort</b> (sorr in place / created sorted version)
 
 ## Operations, Time complexity, and Space Complexity:
+![Big-O-compare.png](images/Big-O-compare.png)
+
 ![Time complexity, and Space Complexity](images/big_o_cheatsheet.jpg)
+
 
 ## List:
 #### ADT:
@@ -65,6 +68,7 @@ Linked List is an Abstract Data Type (ADT) that holds a collection of Nodes, the
 ## Stack
 ### ADT:
 Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out).
+
 ![stack](images/stack.png)
 
 * isFull(), This is used to check whether stack is full or not
@@ -79,6 +83,7 @@ Stack is a linear data structure which follows a particular order in which the o
 
 ### Queue
 A Queue is a linear structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO). A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first. The difference between stacks and queues is in removing. In a stack we remove the item the most recently added; in a queue, we remove the item the least recently added.
+
 ![Queue](images/Queue.png)
 
 * enqueue() – Insert an element at the end of the queue.
@@ -91,3 +96,6 @@ A Queue is a linear structure which follows a particular order in which the oper
 ### Implementation:
 [queue_linked_list](queue/queue_linked_list.c)
 
+## Sorting algorithms
+
+![sorting](images/array_sorting_algorithms_bigo_complexity_chart.jpg)
